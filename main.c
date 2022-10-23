@@ -2,11 +2,15 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+//create values of both tax and tip which can be entered through command line//
+int main(int argc, char** argv[]){
 
-int main(int argc, int *argv){
+double meal;
+double totalBill;
+double tax;
+double tip;
 
-float meal;
-
+//create constant meal cost of the 4 different foods
 srand(time(NULL));
 int r = rand()%4;
 if(r == 0){
@@ -23,11 +27,15 @@ else if(r == 3){
 }
 printf("The meal cost is %.2f\n", meal);
 
-
-
-//create values of both tax and tip which can be entered through command line//
-
-//create constant meal cost of the 4 different foods
-
+for(int i=1;i<argc; ++i){
+printf("The tax percent is %s%% \n",argv[i]);
+    tax = atoi(argv[i]);
+ i++;
+printf("The tip percent is %s%%\n",argv[i]);
+    tip = atoi(argv[i]);
+}
 //calculate from both tax and tip of the meal for total bill
-
+    totalBill = (((tax/100)+1)*meal) + ((tip/100)*meal);
+    printf("The total bill is %.2f\n", totalBill);
+    
+}
