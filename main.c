@@ -7,6 +7,8 @@ int main(int argc, char** argv[]){
 
 double meal;
 double totalBill;
+double totalTax;
+double totalTip;
 double tax;
 double tip;
 
@@ -25,17 +27,24 @@ else if(r == 2){
 else if(r == 3){
     meal = 22.35;
 }
-printf("The meal cost is %.2f\n", meal);
+printf("The meal cost is $%.2f\n", meal);
 
 for(int i=1;i<argc; ++i){
-printf("The tax percent is %s%% \n",argv[i]);
+printf("The tax percent is %s%%\n",argv[i]);
+
     tax = atoi(argv[i]);
+    
  i++;
 printf("The tip percent is %s%%\n",argv[i]);
     tip = atoi(argv[i]);
 }
 //calculate from both tax and tip of the meal for total bill
     totalBill = (((tax/100)+1)*meal) + ((tip/100)*meal);
-    printf("The total bill is %.2f\n", totalBill);
+    totalTax = (((tax/100)+1)*meal);
+    totalTip  =  ((tip/100)*meal);
+
+    printf("The total tax cost is $%.2f\n",totalTax);
+    printf("The total tip is $%.2f\n",totalTip);
+    printf("The total bill is $%.2f\n", totalBill);
     
 }
